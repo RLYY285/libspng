@@ -43,8 +43,8 @@ find $SRC/libspng/tests -name "*.png" | \
 
 cp $SRC/libspng/tests/spng.dict $OUT/
 
-ln -sf $OUT/seed_corpus.zip $OUT/spng_read_fuzzer_seed_corpus.zip
-ln -sf $OUT/seed_corpus.zip $OUT/spng_read_fuzzer_structure_aware_seed_corpus.zip
+cp $OUT/seed_corpus.zip $OUT/spng_read_fuzzer_seed_corpus.zip
+cp $OUT/seed_corpus.zip $OUT/spng_read_fuzzer_structure_aware_seed_corpus.zip
 
 ln -sf $OUT/spng.dict $OUT/spng_read_fuzzer.dict
 ln -sf $OUT/spng.dict $OUT/spng_read_fuzzer_structure_aware.dict
