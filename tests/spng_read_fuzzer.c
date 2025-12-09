@@ -3,6 +3,10 @@
 #include <stdint.h>
 #include <string.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* 极简版 Harness：只为了触发 spng.c 里的漏洞 */
 int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
     // 1. 创建上下文
@@ -21,3 +25,7 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
 
     return 0;
 }
+
+#ifdef __cplusplus
+}
+#endif
