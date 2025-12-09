@@ -17,13 +17,13 @@ cd $SRC/libspng/build
 ar x libz.a
 ar rcs libspng_static.a *.o
 
-$CXX $CXXFLAGS -std=c++11 \
+$CXX $CXXFLAGS -std=c++11 -I$SRC/libspng/spng \
     $SRC/libspng/tests/spng_read_fuzzer.c \
     -DSPNGT_HAVE_FMEMOPEN=1 \
     -o $OUT/spng_read_fuzzer \
     $LIB_FUZZING_ENGINE $SRC/libspng/build/libspng_static.a $SRC/zlib/build/libz.a
 
-$CXX $CXXFLAGS -std=c++11 -I$SRC/zlib/build -I$SRC/zlib \
+$CXX $CXXFLAGS -std=c++11 -I$SRC/zlib/build -I$SRC/zlib -I$SRC/libspng/spng\
     $SRC/libspng/tests/spng_read_fuzzer.c \
     -DSPNGT_HAVE_FMEMOPEN=1 \
     -o $OUT/spng_read_fuzzer_structure_aware \
@@ -31,7 +31,7 @@ $CXX $CXXFLAGS -std=c++11 -I$SRC/zlib/build -I$SRC/zlib \
     -D PNG_MUTATOR_DEFINE_LIBFUZZER_CUSTOM_MUTATOR \
     $LIB_FUZZING_ENGINE $SRC/libspng/build/libspng_static.a $SRC/zlib/build/libz.a
 
-$CXX $CXXFLAGS -std=c++11 \
+$CXX $CXXFLAGS -std=c++11 -I$SRC/libspng/spng\
     $SRC/libspng/tests/spng_write_fuzzer.c \
     -DSPNGT_HAVE_FMEMOPEN=1 \
     -o $OUT/spng_write_fuzzer \
